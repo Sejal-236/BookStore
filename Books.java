@@ -57,4 +57,10 @@ public class Books {
     public int getQuantity() {
         return quantity;
     }
+
+    @Override
+    public String toString() {
+        return "Books [ISBN=" + ISBN + ", title=" + title + ", author=" + author + ", genre=" + genre + ", price="
+                + price + ", quantity=" + quantity + "]";
+    }
 }
