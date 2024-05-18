@@ -18,18 +18,21 @@ public class BookInventoryManager {
                 book.getPrice(), book.getQuantity());
     }
 
-    public List<Books> displayBook() {
-        bookInventoryManagerRepository.displayAllBooks();
+    public void displayBook() {
+        List<Books> bookList = new ArrayList<>();
+       bookList= bookInventoryManagerRepository.displayAllBooks();
+        for (Books books : bookList) {
+            System.out.println(books);
+        }
     }
 
-    public String findByISBN(Long ISBN) {
+    // public String findByISBN(Long ISBN) {
         
-    }
+    // }
 
     public String deleteByISBN(Long ISBN) {
 
         bookInventoryManagerRepository.deleteBook(ISBN);
-
         return "Book with ISBN: " + ISBN + " not found";
     }
 }

@@ -10,6 +10,17 @@ public class Books {
     private double price;
     private int quantity;
 
+    
+
+    public Books(long ISBN, String title, String author, String genre, double price, int quantity) {
+        this.ISBN = ISBN;
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
     public void setISBN(long ISBN) {
         this.ISBN = ISBN;
     }
