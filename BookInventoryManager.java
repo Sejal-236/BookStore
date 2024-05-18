@@ -7,29 +7,29 @@ import java.util.List;
  */
 public class BookInventoryManager {
 
-    List<Books> bookList = new ArrayList<>();
-    HashMap<Long, String> bookMap = new HashMap<>();
-    public void addNewBook (Books book){
+    BookInventoryManagerRepository bookInventoryManagerRepository = new BookInventoryManagerRepository();
+
+    public void addNewBook(Books book) {
+        List<Books> bookList = new ArrayList<>();
+        HashMap<Long, String> bookMap = new HashMap<>();
         bookList.add(book);
         bookMap.put(book.getISBN(), book.getTitle());
+        bookInventoryManagerRepository.addbooks(book.getISBN(), book.getTitle(), book.getAuthor(), book.getGenre(),
+                book.getPrice(), book.getQuantity());
     }
 
-    public List<Books> displayBook (){
-        return bookList;
+    public List<Books> displayBook() {
+        bookInventoryManagerRepository.displayAllBooks();
     }
 
-    public String findByISBN (Long ISBN){
-        if(bookMap.containsKey(ISBN)){
-            return bookMap.get(ISBN);
-        }
-        return "Book not found";
+    public String findByISBN(Long ISBN) {
+        
     }
-    // public String findByISBN (Long ISBN){
-    // //     for(Books book: bookList){
-    // //       if(book.getISBN()==ISBN){
-    // //         return book.getTitle();
-    // //       }
-    // //     }
-    // //   return "Book not found";
-    // }
+
+    public String deleteByISBN(Long ISBN) {
+
+        bookInventoryManagerRepository.deleteBook(ISBN);
+
+        return "Book with ISBN: " + ISBN + " not found";
+    }
 }
