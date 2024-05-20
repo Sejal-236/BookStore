@@ -10,10 +10,6 @@ public class BookInventoryManager {
     BookInventoryManagerRepository bookInventoryManagerRepository = new BookInventoryManagerRepository();
 
     public void addNewBook(Books book) {
-        List<Books> bookList = new ArrayList<>();
-        HashMap<Long, String> bookMap = new HashMap<>();
-        bookList.add(book);
-        bookMap.put(book.getISBN(), book.getTitle());
         bookInventoryManagerRepository.addBooks(book.getISBN(), book.getTitle(), book.getAuthor(), book.getGenre(),
                 book.getPrice(), book.getQuantity());
     }
