@@ -14,25 +14,27 @@ public class BookInventoryManager {
         HashMap<Long, String> bookMap = new HashMap<>();
         bookList.add(book);
         bookMap.put(book.getISBN(), book.getTitle());
-        bookInventoryManagerRepository.addbooks(book.getISBN(), book.getTitle(), book.getAuthor(), book.getGenre(),
+        bookInventoryManagerRepository.addBooks(book.getISBN(), book.getTitle(), book.getAuthor(), book.getGenre(),
                 book.getPrice(), book.getQuantity());
     }
 
     public void displayBook() {
         List<Books> bookList = new ArrayList<>();
-       bookList= bookInventoryManagerRepository.displayAllBooks();
+        bookList = bookInventoryManagerRepository.displayAllBooks();
         for (Books books : bookList) {
             System.out.println(books);
         }
     }
 
-    // public String findByISBN(Long ISBN) {
-        
-    // }
+    public void findByISBN(Long ISBN) {
+        bookInventoryManagerRepository.findBookByISBN(ISBN);
+    }
 
-    public String deleteByISBN(Long ISBN) {
-
+    public void deleteByISBN(Long ISBN) {
         bookInventoryManagerRepository.deleteBook(ISBN);
-        return "Book with ISBN: " + ISBN + " not found";
+    }
+
+    public void updateBook(Long ISBN, int quantity) {
+        bookInventoryManagerRepository.updateBookByISBN(ISBN, quantity);
     }
 }

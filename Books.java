@@ -10,8 +10,6 @@ public class Books {
     private double price;
     private int quantity;
 
-    
-
     public Books(long ISBN, String title, String author, String genre, double price, int quantity) {
         this.ISBN = ISBN;
         this.title = title;
